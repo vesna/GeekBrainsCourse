@@ -68,16 +68,41 @@ VALUES
 
 --1. Напишите запрос, который вывел бы таблицу со столбцами в следующем порядке: city, sname,
 --snum, comm. (к первой или второй таблице, используя SELECT)
+SELECT Сity, Sname, Snum, Сomm
+FROM dbo.SALESPEOPLE;
 
 --2. Напишите команду SELECT, которая вывела бы оценку(rating), сопровождаемую именем
 --каждого заказчика в городе San Jose. (“заказчики”)
+SELECT Сname AS "Заказчики",
+	Rating
+FROM dbo.CUSTOMERS
+WHERE Сity like 'SanJose';
+
 --3. Напишите запрос, который вывел бы значения snum всех продавцов из таблицы заказов без
 --каких бы то ни было повторений. (уникальные значения в “snum“ “Продавцы”)
+SELECT DISTINCT o.Snum
+FROM dbo.ORDERS as o
+
 --4*. Напишите запрос, который бы выбирал заказчиков, чьи имена начинаются с буквы G.
 --Используется оператор "LIKE": (“заказчики”) https://dev.mysql.com/doc/refman/8.0/en/string-comparisonfunctions.html
+SELECT Сname as 'Заказчики'
+FROM dbo.CUSTOMERS
+WHERE Сname like 'G%'
+
 --5. Напишите запрос, который может дать вам все заказы со значениями суммы выше чем $1,000.
 --(“Заказы”, “amt” - сумма)
+SELECT Onum as 'Заказы', Amt as 'Сумма'
+FROM dbo.ORDERS
+WHERE Amt > 1000
+
 --6. Напишите запрос который выбрал бы наименьшую сумму заказа.
 --(Из поля “amt” - сумма в таблице “Заказы” выбрать наименьшее значение)
+SELECT TOP 1 Amt as 'Сумма'
+FROM dbo.ORDERS
+WHERE Amt = (SELECT MIN(Amt) FROM dbo.ORDERS);
+
 --7. Напишите запрос к таблице “Заказчики”, который может показать всех заказчиков, у которых
 --рейтинг больше 100 и они находятся не в Риме.
+SELECT Сnum, Сname
+FROM dbo.CUSTOMERS
+WHERE Rating > 100 AND Сity like 'Rome';
