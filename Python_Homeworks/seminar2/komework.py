@@ -38,18 +38,18 @@
 # Найдите произведение элементов на указанных позициях. 
 # Позиции хранятся в файле file.txt в одной строке одно число.
 
-# n = abs(int(input()))
-# list = []
-# for i in range(-n, n+1):
-#     list.append(i)
-# print(list)
-# with open('seminar2/file.txt', 'r') as f:
-#     nums = f.read().splitlines()
-# print(nums)
-# result = 1
-# for i in nums:
-#     result *= list[int(i) - 1]
-# print(result)
+n = abs(int(input()))
+list = []
+for i in range(-n, n+1):
+    list.append(i)
+print(list)
+with open('seminar2/file.txt', 'r') as f:
+    nums = f.read().splitlines()
+print(nums)
+result = 1
+for i in nums:
+    result *= list[int(i) - 1]
+print(result)
 
 # 18.Реализуйте алгоритм перемешивания списка.
 # from random import shuffle
