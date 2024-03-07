@@ -10,6 +10,8 @@ pip install versioneer
 jupyter notebook NotebookApp.allow_origin='https://colab.research.google.com' port=8888 NotebookApp.port_retries=0'''
 from sympy import *
 import pandas as pd
+import numpy 
+
 
 #df = pd.read_csv('california_housing_train.csv')
 

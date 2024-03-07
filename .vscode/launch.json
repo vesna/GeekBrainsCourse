@@ -2,18 +2,48 @@
     "version": "0.2.0",
     "configurations": [
         {
-            // Use IntelliSense to find out which attributes exist for C# debugging
-            // Use hover for the description of the existing attributes
-            // For further information visit https://github.com/dotnet/vscode-csharp/blob/main/debugger-launchjson.md
+            "type": "java",
+            "name": "Task03",
+            "request": "launch",
+            "mainClass": "Task03",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task02",
+            "request": "launch",
+            "mainClass": "Task02",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "Hello",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Hello",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar01.Hello",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
             "name": ".NET Core Launch (console)",
             "type": "coreclr",
             "request": "launch",
             "preLaunchTask": "build",
-            // If you have changed target frameworks, make sure to update the program path.
             "program": "${workspaceFolder}/С#_Homeworks/Seminar02/bin/Debug/net7.0/Seminar02.dll",
             "args": [],
             "cwd": "${workspaceFolder}/С#_Homeworks/Seminar02",
-            // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false
         },
