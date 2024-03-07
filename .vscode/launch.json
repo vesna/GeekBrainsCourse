@@ -3,6 +3,27 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Task04",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.seminar02.Task04",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task03",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.seminar02.Task03",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.seminar02.Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
             "name": "Homework",
             "request": "launch",
             "mainClass": "Homework",
