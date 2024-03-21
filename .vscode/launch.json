@@ -5,64 +5,121 @@
             "type": "java",
             "name": "Task04",
             "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar02.Task04",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar02.Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Homework",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar01.Homework",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Homework",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar02.Homework",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Task02",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar03.Task02",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar03.Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
+        },
+        {
+            "type": "java",
+            "name": "Task04",
+            "request": "launch",
             "mainClass": "Java_Homeworks.seminar02.Task04",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Task03",
             "request": "launch",
             "mainClass": "Java_Homeworks.seminar02.Task03",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Task01",
             "request": "launch",
             "mainClass": "Java_Homeworks.seminar02.Task01",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Homework",
             "request": "launch",
             "mainClass": "Homework",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Task03",
             "request": "launch",
             "mainClass": "Task03",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Task02",
             "request": "launch",
             "mainClass": "Task02",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Task01",
             "request": "launch",
             "mainClass": "Task01",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Hello",
             "request": "launch",
             "mainClass": "Hello",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "type": "java",
             "name": "Hello",
             "request": "launch",
             "mainClass": "Java_Homeworks.Seminar01.Hello",
-            "projectName": "GeekBrainsCourse_5c56ea99"
+            "projectName": "GeekBrainsCourse_5c56ea99",
+            "vmArgs": "--enable-preview"
         },
         {
             "name": ".NET Core Launch (console)",

@@ -32,8 +32,7 @@ https://lyrical-galette-983.notion.site/4557d2f0c59544958976293bb808dd04.
     }
 
     private static void writeString(String str) {
-        FileWriter file;
-        try (file = new FileWriter("test.txt")){
+        try (FileWriter file = new FileWriter("test.txt")){
             file.append(str);
             System.out.println("Файл успешно создан");
         } 
