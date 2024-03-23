@@ -3,6 +3,55 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Homework",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar04.Homework",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Homework",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar03.Homework",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task02",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar05.Task02",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar05.Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task02",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar04.Task02",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task01",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar04.Task01",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Task00",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar04.Task00",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
             "name": "Task04",
             "request": "launch",
             "mainClass": "Java_Homeworks.Seminar02.Task04",
