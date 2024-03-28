@@ -1,6 +1,6 @@
 package Java_Homeworks.Seminar03;
 
-import java.util.Arrays;
+import java.util.*;
 
 public class Homework {
     public static void main(String[] args) {
@@ -10,8 +10,17 @@ public class Homework {
         // System.out.println(Arrays.toString(array));
 
         /* 2. Пусть дан произвольный список целых чисел. Удалить из него чётные числа.*/
+        // List<Integer> array = new ArrayList<>(List.of(5, 1, 2, 3, 4, 8, 0 ));
+        // System.out.println(array);
+        // deleteWholeNumber(array);
+        // System.out.println(array);
 
         /*3. Задан целочисленный список ArrayList. Найти минимальное, максимальное и среднее арифметичское этого списка.*/
+        List<Integer> array = new ArrayList<>(List.of(5, 1, 2, 3, 4, 8, 10 ));
+        System.out.println(array);
+        System.out.printf("Максимальное число %s \n", findMax(array));
+        System.out.printf("Минимальное число %s \n", findMin(array));
+        System.out.printf("Среднее арефметическое число %s", findMiddle(array));
 
         /*4*. (Необязательная задача повышенной сложности)
         Даны два ArrayList из целых чисел. Написать функции, которые вычисляют разницу коллекций:
@@ -20,6 +29,47 @@ public class Homework {
         B - A = все числа из второй коллекции, которые не содержатся в первой
         Симметрическая разность:
         A ^ B = числа из первой коллекции, которых нет во второй, А ТАКЖЕ числа из второй, которых нет в первой */
+    }
+
+    private static double findMiddle(List<Integer> numbers){
+        double average = 0;
+        if (numbers.size() > 0) {
+            double sum = 0;
+            for (int j = 0; j < numbers.size(); j++) {
+                sum += numbers.get(j);
+            }
+            average = sum / numbers.size();
+        }
+        return average;
+    }
+
+    private static int findMin(List<Integer> array){
+        int result = array.get(0);
+        for(int i = 1; i < array.size(); i++){
+            if(array.get(i-1) > array.get(i)){
+                result = array.get(i);
+            }
+        }
+        return result;
+    }
+
+    private static int findMax(List<Integer> array){
+        int result = array.get(0);
+        for(int i = 1; i < array.size(); i++){
+            if(array.get(i-1) < array.get(i)){
+                result = array.get(i);
+            }
+        }
+        return result;
+    }
+
+    private static void deleteWholeNumber(List<Integer> array){
+        for(int i = 0; i < array.size(); i++){
+            if(array.get(i) % 2 == 0){
+                array.remove(i);
+                i--;
+            }
+        }
     }
 
     private static void mergeSort(int[] array, int begin, int end){

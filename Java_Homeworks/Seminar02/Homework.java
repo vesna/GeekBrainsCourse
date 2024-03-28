@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 public class Homework {
     private static Logger logger = Logger.getLogger(Homework.class.getName());
     public static void main(String[] args){
-        /*В файле содержится строка с исходными данными в такой форме:
+        /*1. В файле содержится строка с исходными данными в такой форме:
 {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
 Требуется на её основе построить и вывести на экран новую строку, в форме SQL запроса:
 SELECT * FROM students WHERE name = "Ivanov" AND country = "Russia" AND city = "Moscow";
@@ -40,12 +40,14 @@ SELECT * FROM students WHERE name = "Ivanov" AND country = "Russia" AND city = "
         // }
         // builder.append(";");
         // System.out.println(builder.toString());
-/*Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл. */
+
+/*2. Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл. */
         // int[] array = {1, 4, 7, 2, 9, 8 };
         // System.out.println(Arrays.toString(array));
         // BubbleSort(array);
         // System.out.println(Arrays.toString(array));
-/*В файле содержится строка с данными:
+
+/*3. В файле содержится строка с данными:
 [{"фамилия":"Иванов","оценка":"5","предмет":"Математика"}, {"фамилия":"Петрова","оценка":"4","предмет":"Информатика"}, {"фамилия":"Краснов","оценка":"5","предмет":"Физика"}]
 Напишите метод, который разберёт её на составные части и, используя StringBuilder создаст массив строк такого вида:
 Студент Иванов получил 5 по предмету Математика.
