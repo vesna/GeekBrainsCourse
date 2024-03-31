@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Homework",
+            "request": "launch",
+            "mainClass": "Java_Homeworks.Seminar05.Homework",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
             "name": "Hello",
             "request": "launch",
             "mainClass": "_.Java_Homeworks.Seminar01.Hello",
