@@ -1,48 +1,93 @@
 package OOP_Homeworks.Units;
 
 import java.util.ArrayList;
-import java.util.Random;
 
-public abstract class Unit implements UnitInterface{
-    protected float hp;
-    protected int speed;
-    protected int damage;
-    protected final String NAME;
-    
+public abstract class Unit implements UnitInterface {
 
-    public Unit(float hp, int speed, int damage, String name) {
-        this.hp = hp;
-        this.speed = speed;
-        this.damage = damage;
+    private int attack; // атака
+    private int defense; // защита
+    private float minDamage; // урон min
+    private float maxDamage; // урон max
+    private float hp; // жизнь
+    private int speed; // скорость
+    private Coordinates coordinates;
+    private int ganagSize;
+    private final ArrayList<Unit> name;
 
-        NAME = name;
+    public ArrayList<Unit> getName() {
+        return name;
     }
 
-    @Override
-    public void step(ArrayList<Unit> team, ArrayList<Unit> friends) {
-        System.out.println("Step!");
-        
+    public Coordinates getCoordinates() {
+        return coordinates;
     }
 
-    public String getNAME() {
-        return NAME;
+    public int getGanagSize() {
+        return ganagSize;
+    }
+
+    public int getAttack() {
+        return attack;
+    }
+
+    public int getDefense() {
+        return defense;
+    }
+
+    public float getMinDamage() {
+        return minDamage;
+    }
+
+    public float getMaxDamage() {
+        return maxDamage;
+    }
+
+    public float getHp() {
+        return hp;
     }
 
     public int getSpeed() {
         return speed;
     }
 
-    public void takeDamage(int damage) {
-        if(this.hp - damage > 0) this.hp -= damage;
-        else this.hp = 0;
+    public Unit(int attack, int defense, float minDamage, float maxDamage, float hp, int speed, ArrayList<Unit> name, int x,
+            int y, int ganagSize) {
+        this.attack = attack;
+        this.defense = defense;
+        this.minDamage = minDamage;
+        this.maxDamage = maxDamage;
+        this.hp = hp;
+        this.speed = speed;
+        this.name = name;
+        coordinates = new Coordinates(x, y);
+        this.ganagSize = ganagSize;
     }
-    
-    public void attack(Unit target, int damage){
-        Random rnd = new Random();
-        int causedDamage = rnd.nextInt(1, damage);
-        System.out.printf("%s attack %s \t", this.getClass().getSimpleName(), target.getClass().getSimpleName());
-        System.out.printf("Power of knock = %d\n", causedDamage);
-        System.out.printf("%s hp = %.0f\n", target.getClass().getSimpleName(), target.hp);
-        target.takeDamage(causedDamage);
+
+    @Override
+    public void step(ArrayList<Unit> team) {
+      //  System.out.println("Step!");
+
+    }
+
+    public float takeMiddleDamage(float minDamage, float maxDamage) {
+        return (maxDamage + minDamage) / 2;
+    }
+
+    public void attack(Unit target, float causedDamage) {
+        System.out.printf("\n%s attack %s \t", this.getInfo(), target.getInfo());
+        System.out.printf("Power of knock = %f\n", causedDamage);
+        System.out.printf("%s before hp = %.0f\n", target.getInfo(), target.hp);
+        if (target.hp - causedDamage > 0)
+            target.hp -= causedDamage;
+        else
+            target.hp = 0;
+        System.out.printf("%s after hp = %.0f\n", target.getInfo(), target.hp);
+    }
+
+    @Override
+    public String toString() {
+        return this.getInfo() + " [attack=" + attack + ", defense=" + defense + ", minDamage=" + minDamage
+                + "maxDamage=" + maxDamage + ", hp=" + hp + ", speed=" + speed + ", NAME=" + getClass().getName() + ", x="
+                + coordinates.getX() + ", y=" + coordinates.getY() + ", ganagSize=" + ganagSize + "]";
     }
 }
