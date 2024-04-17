@@ -103,19 +103,18 @@ public class Main {
                 } else {
                     unit.step(darkSide);
                 }
-
             }
         }
-        allUnits.sort(new Comparator<Unit>() {
-            @Override
-            public int compare(Unit u1, Unit u2) {
-                if (u1.getSpeed() == u2.getSpeed())
-                    return 0;
-                else if (u1.getSpeed() > u2.getSpeed())
-                    return 1;
-                else
-                    return -1;
-            }
-        });
+        // allUnits.sort(new Comparator<Unit>() {
+        //     @Override
+        //     public int compare(Unit u1, Unit u2) {
+        //         if (u1.getSpeed() == u2.getSpeed())
+        //             return 0;
+        //         else if (u1.getSpeed() > u2.getSpeed())
+        //             return 1;
+        //         else
+        //             return -1;
+        //     }
+        // });
     }
 }

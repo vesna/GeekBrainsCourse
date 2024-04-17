@@ -1,0 +1,61 @@
+1.
+svlight@gb-linux:~/home$ tree
+.
+├── mentors
+│   └── mentors_list.txt
+└── students
+    └── students_list.txt
+
+2 directories, 2 files
+---------------------------------------------------------------------------------
+2.
+svlight@gb-linux:~/home/students$ ll
+total 12
+drwxrwxr-x 2 svlight svlight 4096 апр 16 23:49 ./
+drwxrwxr-x 4 svlight svlight 4096 апр 16 23:40 ../
+-rw-rw-r-- 1 svlight svlight   31 апр 16 23:49 students_list.txt
+
+svlight@gb-linux:~/home/mentors$ ll
+total 12
+drwxrwxr-x 2 svlight svlight 4096 апр 16 23:47 ./
+drwxrwxr-x 4 svlight svlight 4096 апр 16 23:40 ../
+-rw-rw-r-- 1 svlight svlight  221 апр 16 23:47 mentors_list.txt
+--------------------------------------------------------------------------------
+3.
+svlight@gb-linux:~/home$ mv mentors/mentors_list.txt students/mentors_list.txt
+svlight@gb-linux:~/home$ tree
+.
+├── mentors
+└── students
+    ├── mentors_list.txt
+    └── students_list.txt
+
+2 directories, 2 files
+-------------------------------------------------------------------------------
+4.
+svlight@gb-linux:~/home$ rmdir mentors
+svlight@gb-linux:~/home$ tree
+.
+└── students
+    ├── mentors_list.txt
+    └── students_list.txt
+
+1 directory, 2 files
+------------------------------------------------------------------------------
+5.
+svlight@gb-linux:~/home$ mv students students_and_mentors
+svlight@gb-linux:~/home$ tree
+.
+└── students_and_mentors
+    ├── mentors_list.txt
+    └── students_list.txt
+
+1 directory, 2 files
+------------------------------------------------------------------------------
+6.
+svlight@gb-linux:~/home$ rm -r students_and_mentors
+svlight@gb-linux:~/home$ tree
+.
+
+0 directories, 0 files
+-----------------------------------------------------------------------------

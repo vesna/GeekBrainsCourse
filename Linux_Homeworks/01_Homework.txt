@@ -1,0 +1,37 @@
+Windows PowerShell
+(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+
+Попробуйте новую кроссплатформенную оболочку PowerShell (https://aka.ms/pscore6)
+
+PS C:\Users\svlig> ssh svlight@localhost 8022
+ssh: connect to host localhost port 22: Connection refused
+PS C:\Users\svlig> ssh -p 8022 svlight@localhost
+svlight@localhost's password:
+Welcome to Ubuntu 22.04.4 LTS (GNU/Linux 6.5.0-27-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+Last login: Tue Apr 16 17:42:50 2024 from 10.0.2.2
+svlight@gb-linux:~$ uname -a
+Linux gb-linux 6.5.0-27-generic #28~22.04.1-Ubuntu SMP PREEMPT_DYNAMIC Fri Mar 15 10:51:06 UTC 2 x86_64 x86_64 x86_64 GNU/Linux
+svlight@gb-linux:~$ hostnamectl
+ Static hostname: gb-linux
+       Icon name: computer-vm
+         Chassis: vm
+      Machine ID: 5255302ae1c34f26ac0fd12d558be085
+         Boot ID: ad4efd4995074aa4ad4cc47fd034e710
+  Virtualization: oracle
+Operating System: Ubuntu 22.04.4 LTS
+          Kernel: Linux 6.5.0-27-generic
+    Architecture: x86-64
+ Hardware Vendor: innotek GmbH
+  Hardware Model: VirtualBox

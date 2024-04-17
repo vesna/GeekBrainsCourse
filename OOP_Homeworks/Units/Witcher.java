@@ -2,7 +2,7 @@ package OOP_Homeworks.Units;
 
 import java.util.ArrayList;
 
-public class Witcher extends MysticalMan {
+public class Witcher extends MysticalUnit {
     public Witcher(ArrayList<Unit> name, int x, int y, int ganagSize) {
         super(17, 12, -5, -5, 30, 9, name, 1, x, y, ganagSize);
     }

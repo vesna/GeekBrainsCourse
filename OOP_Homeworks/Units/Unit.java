@@ -66,7 +66,6 @@ public abstract class Unit implements UnitInterface {
     @Override
     public void step(ArrayList<Unit> team) {
       //  System.out.println("Step!");
-
     }
 
     public float takeMiddleDamage(float minDamage, float maxDamage) {
@@ -74,14 +73,14 @@ public abstract class Unit implements UnitInterface {
     }
 
     public void attack(Unit target, float causedDamage) {
-        System.out.printf("\n%s attack %s \t", this.getInfo(), target.getInfo());
-        System.out.printf("Power of knock = %f\n", causedDamage);
-        System.out.printf("%s before hp = %.0f\n", target.getInfo(), target.hp);
+        // System.out.printf("\n%s attack %s \t", this.getInfo(), target.getInfo());
+        // System.out.printf("Power of knock = %f\n", causedDamage);
+        // System.out.printf("%s before hp = %.0f\n", target.getInfo(), target.hp);
         if (target.hp - causedDamage > 0)
             target.hp -= causedDamage;
         else
             target.hp = 0;
-        System.out.printf("%s after hp = %.0f\n", target.getInfo(), target.hp);
+        //System.out.printf("%s after hp = %.0f\n", target.getInfo(), target.hp);
     }
 
     @Override

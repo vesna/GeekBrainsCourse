@@ -51,19 +51,19 @@ public abstract class Shooter extends Unit {
         } else {
             this.attack(unitResult, getMinDamage());
         }
-
+        //System.out.println(getInfo());
         for (Unit unit : getName()) {
             if (unit.getInfo().equals("Крестьянин")) {
                 Peasant peasant = (Peasant) unit;
                 int peasantSupply = peasant.getSupply();
                 if (peasantSupply > 0) {
                     peasant.setSupply(peasantSupply - 1);
-                    System.out.printf("Peasant found arrow %s\n", this.toString());
+                   // System.out.printf("Peasant found arrow %s\n", this.toString());
                     return;
                 }
             }
         }
         arrows--;
-        System.out.printf("after %s\n", this.toString());
+       // System.out.printf("after %s\n", this.toString());
     }
 }

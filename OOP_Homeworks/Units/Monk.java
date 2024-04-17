@@ -2,7 +2,7 @@ package OOP_Homeworks.Units;
 
 import java.util.ArrayList;
 
-public class Monk extends MysticalMan {
+public class Monk extends MysticalUnit {
     public Monk(ArrayList<Unit> name, int x, int y, int ganagSize) {
         super(12, 7, -4, -4, 30, 5, name, 1, x, y, ganagSize);
     }
