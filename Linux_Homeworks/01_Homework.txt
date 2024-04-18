@@ -1,8 +1,9 @@
-Windows PowerShell
-(C) Корпорация Майкрософт (Microsoft Corporation). Все права защищены.
+Урок 1. Установка ОС Ubuntu в виртуальной машине. Работа в SSH-клиенте
+1.Установить Ubuntu Desktop на виртуальную машину.
+2.Установить гостевые дополнения ОС.
+3.Установить Midnight Commander.
 
-Попробуйте новую кроссплатформенную оболочку PowerShell (https://aka.ms/pscore6)
-
+* Установить SSH-соединение с виртуальной машиной из хостовой.
 PS C:\Users\svlig> ssh svlight@localhost 8022
 ssh: connect to host localhost port 22: Connection refused
 PS C:\Users\svlig> ssh -p 8022 svlight@localhost

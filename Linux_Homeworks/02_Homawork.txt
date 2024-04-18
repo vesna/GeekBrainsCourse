@@ -1,4 +1,6 @@
-1.
+Урок 2. Работа с файлами и ссылками
+1.Создать каталоги students и mentors в домашней директории, 
+а в них — текстовые файлы students_list.txt и mentors_list.txt соответственно.
 svlight@gb-linux:~/home$ tree
 .
 ├── mentors
@@ -8,7 +10,8 @@ svlight@gb-linux:~/home$ tree
 
 2 directories, 2 files
 ---------------------------------------------------------------------------------
-2.
+2.Открыть созданные в п.1 файлы в любом текстовом редакторе и заполнить их 
+(в соответствии с названием) списком Ваших одногруппников и наставников на данном потоке.
 svlight@gb-linux:~/home/students$ ll
 total 12
 drwxrwxr-x 2 svlight svlight 4096 апр 16 23:49 ./
@@ -21,7 +24,7 @@ drwxrwxr-x 2 svlight svlight 4096 апр 16 23:47 ./
 drwxrwxr-x 4 svlight svlight 4096 апр 16 23:40 ../
 -rw-rw-r-- 1 svlight svlight  221 апр 16 23:47 mentors_list.txt
 --------------------------------------------------------------------------------
-3.
+3.Переместите файл mentors_list.txt в папку students.
 svlight@gb-linux:~/home$ mv mentors/mentors_list.txt students/mentors_list.txt
 svlight@gb-linux:~/home$ tree
 .
@@ -32,7 +35,7 @@ svlight@gb-linux:~/home$ tree
 
 2 directories, 2 files
 -------------------------------------------------------------------------------
-4.
+4.Удалите папку mentors.
 svlight@gb-linux:~/home$ rmdir mentors
 svlight@gb-linux:~/home$ tree
 .
@@ -42,7 +45,7 @@ svlight@gb-linux:~/home$ tree
 
 1 directory, 2 files
 ------------------------------------------------------------------------------
-5.
+5.Переименуйте папку students в students_and_mentors.
 svlight@gb-linux:~/home$ mv students students_and_mentors
 svlight@gb-linux:~/home$ tree
 .
@@ -52,7 +55,7 @@ svlight@gb-linux:~/home$ tree
 
 1 directory, 2 files
 ------------------------------------------------------------------------------
-6.
+6.Удалите папку students_and_mentors вместе с содержимым.
 svlight@gb-linux:~/home$ rm -r students_and_mentors
 svlight@gb-linux:~/home$ tree
 .
