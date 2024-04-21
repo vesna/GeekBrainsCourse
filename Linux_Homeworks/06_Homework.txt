@@ -1,0 +1,74 @@
+Урок 6. Запуск стека для веб-приложения
+Задание:
+1. Установить Nginx
+sudo apt install nginx -y
+sudo nginx -t
+--------------------------------
+2. * настроить Nginx на работу с PHP-FPM.
+sudo apt install php8.1-fpm
+cd /etc/php/8.1/
+ll
+cd fpm/pool.d
+ll
+sudo nano www.conf
+....
+listen = /run/php/php8.1-fpm.sock
+...
+sudo nano /etc/nginx/sites-enabled/default
+...
+ location ~ \.php$ {
+                include snippets/fastcgi-php.conf;
+        #
+        #       # With php-fpm (or other unix sockets):
+                fastcgi_pass unix:/run/php/php8.1-fpm.sock;
+        #       # With php-cgi (or other tcp sockets):
+        #       fastcgi_pass 127.0.0.1:9000;
+        }
+...
+svlight@gb-linux:/etc/nginx$ sudo nginx -t
+svlight@gb-linux:/etc/nginx$ sudo systemctl reload nginx
+svlight@gb-linux:/etc/nginx$ sudo systemctl status php*
+---------------------------------------------
+3. Установить Apache.
+sudo apt install apache2 -y
+sudo apachectl -t
+--------------------------------------------
+4. * Настроить обработку PHP. Добиться одновременной работы с Nginx.
+sudo apt install libapache2-mod-php8.1 php8.1 -y
+svlight@gb-linux:/etc/apache2/mods-enabled$ cd /var/www/html/
+svlight@gb-linux:/var/www/html$ ll
+...
+-rw-r--r-- 1 root root    21 апр 21 19:07 info.php
+svlight@gb-linux:/var/www/html$ cat info.php
+<?php
+        phpinfo();
+?>
+localhost/info.php
+---------------------------------------------------------------------------------
+5. Настроить схему обратного прокси для Nginx (динамика - на Apache).
+sudo nano /etc/nginx/sites-enabled/default
+ location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                #try_files $uri $uri/ =404;
+                proxy_pass http://localhost:8080;
+                proxy_set_header Host $host;
+                proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+                proxy_set_header X-Real-IP $remote_addr;
+        }
+---------------------------------------------------------------------
+6. Установить MySQL. Создать новую базу данных и таблицу в ней.
+sudo apt install mysql-server-8.0 -y
+svlight@gb-linux:/etc/nginx$ sudo systemctl status mysql
+svlight@gb-linux:/etc/nginx$ sudo mysql -u root -p
+mysql> show databases;
+use mysql;
+SELECT * FROM user\G;
+CREATE DATABASE gb;
+SHOW TABLES;
+CREATE TABLE users(id INT, email VARCHAR(100));
+INSERT INTO users VALUES (1, 'ivan@mail.ru'),(2, 'user2@mail.ru'),(3, 'user3@mail.ru');
+------------------------------
+7. * Установить пакет phpmyadmin и запустить его веб-интерфейс для управления MySQL.
+sudo apt install php-mbstring -y
+sudo apt install phpmyadmin -y
