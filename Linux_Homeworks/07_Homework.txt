@@ -1,0 +1,29 @@
+Урок 7. Запуск веб-приложения из контейнеров
+1. Переустановить операционную систему (по желанию, для дополнительной практики)
+2. Установить Docker.
+svlight@gb-linux:/etc/nginx$ sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
+svlight@gb-linux:/etc/nginx$ sudo apt install curl
+svlight@gb-linux:/etc/nginx$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+svlight@gb-linux:/etc/nginx$ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
+svlight@gb-linux:/etc/nginx$ sudo apt update
+svlight@gb-linux:/etc/nginx$ sudo apt install docker -y
+svlight@gb-linux:/etc/nginx$ sudo apt install docker.io -y
+-------------------------------------------------------
+3. Запустить контейнер с Ubuntu.
+sudo docker run -d ubuntu
+-------------------------------------------------------
+4. * Используя Dockerfile, собрать связку nginx + PHP-FPM в одном контейнере.
+nano Dockerfile
+
+FROM ubuntu:20.04
+MAINTAINER GB_student
+RUN apt-get update
+RUN apt-get install nginx -y
+RUN apt-get install php-fpm -y
+RUN mkdir /run/php-fpm
+VOLUME "/var/www/html"
+EXPOSE 80
+CMD /usr/sbin/nginx -g "daemon off;" ; php-fpm -D
+
+sudo docker build -t php_fpm .
+sudo docker images
