@@ -1,3 +1,5 @@
+package Algorithm_Homeworks;
+
 public class LinkedListT<T extends Comparable<T>> {
     private Node head;
     private int size;

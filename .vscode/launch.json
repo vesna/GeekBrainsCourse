@@ -3,6 +3,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LinkedList",
+            "request": "launch",
+            "mainClass": "Algorithm_Homeworks.LinkedList",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "Algorithm_Homeworks.Main",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
             "name": "Main",
             "request": "launch",
             "mainClass": "OOP_Homeworks.Main",

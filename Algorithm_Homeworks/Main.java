@@ -1,6 +1,7 @@
+package Algorithm_Homeworks;
+
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Main {
@@ -21,6 +22,10 @@ public class Main {
         System.out.println(Duration.between(timeQuickSortStart, timeQuickSortEnd));
 
         System.out.println(Duration.between(timeInsertSortStart, timeInsertSortEnd));
+
+        LinkedList linkedList = new LinkedList();
+        for (int i = 0; i < 10; i++)
+            linkedList.add(new Random().nextInt(200));
     }
 
     public static void quickSort(int[] array) {

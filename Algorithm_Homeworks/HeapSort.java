@@ -1,3 +1,5 @@
+package Algorithm_Homeworks;
+
 public class HeapSort {
     public static void sort(int[] array) {
         for (int i = array.length / 2 - 1; i >= 0; i--)

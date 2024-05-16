@@ -1,6 +1,27 @@
+package Algorithm_Homeworks;
+
+import java.util.Random;
+
 public class LinkedList {
     private Node head;
     private int size;
+
+    public static void main(String[] args) {
+
+        LinkedList linkedList = new LinkedList();
+        for (int i = 0; i < 10; i++)
+            linkedList.add(new Random().nextInt(200));
+
+        linkedList.print();
+        linkedList.reverse();
+        linkedList.print();
+    }
+
+    public void reverse(){
+        for(int i = 0; i < size/2; i++){
+            swap(i, size - i - 1);
+        }
+    }
 
     public void add(int value) {
         Node newNode = new Node(value);
