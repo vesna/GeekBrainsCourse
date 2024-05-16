@@ -6,6 +6,21 @@ import java.util.List;
 public class BinTree<T extends Comparable<T>> {
     Node root;
 
+    public static void main(String args[]){
+        BinTree<Integer> tree = new BinTree<>();
+        tree.add(5);
+        tree.add(6);
+        tree.add(7);
+        tree.add(1);
+        tree.add(4);
+        tree.add(3);
+        tree.add(5);
+        tree.add(8);
+
+        tree.print();
+
+    }
+
     public boolean add(T value) {
         if (root == null) {
             Node newNode = new Node(value);
@@ -185,7 +200,10 @@ public class BinTree<T extends Comparable<T>> {
         public PrintNode(Node node) {
             depth = 0;
             this.node = node;
-            this.str = node.value.toString();
+            char c = 'B';
+            if (this.node.color == Color.Red)
+                c = 'R';
+            this.str = node.value.toString() + c;
         }
     }
 
@@ -211,7 +229,10 @@ public class BinTree<T extends Comparable<T>> {
             for (int i = 0; i < height; i++) {
                 PrintNode currentNode = list.get(i).get(j);
                 if (currentNode.node != null) {
-                    currentNode.str = currentNode.node.value.toString();
+                    char c = 'B';
+                     if (currentNode.node.color == Color.Red)
+                         c = 'R';
+                    currentNode.str = currentNode.node.value.toString() + c;
                     if (currentNode.node.left != null) {
                         int in = i + (maxDepth / (int) Math.pow(2, currentNode.depth));
                         int jn = j + 3;
