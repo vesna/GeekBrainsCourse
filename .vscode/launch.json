@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Homework01",
+            "request": "launch",
+            "mainClass": "Homework01",
+            "projectName": "GeekBrainsCourse_5c56ea99"
+        },
+        {
+            "type": "java",
             "name": "BinTree",
             "request": "launch",
             "mainClass": "Algorithm_Homeworks.BinTree",
