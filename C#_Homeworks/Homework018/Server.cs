@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Sockets;
+﻿using System.Net.Sockets;
 using System.Net;
 using System.Text;
-using System.Threading.Tasks;
-using DBTest.Models;
+using Homework018.Models;
 
-namespace DBTest
+namespace Homework018
 {
     public class Server
     {
         public static Dictionary<String, IPEndPoint> clients = new Dictionary<string, IPEndPoint>();
         static private CancellationTokenSource cts = new CancellationTokenSource();
         static private CancellationToken ct = cts.Token;
-        static private UdpClient udpClient;
+        static private UdpClient? udpClient;
 
         static Task Register(string name, IPEndPoint fromep)
         {
@@ -50,7 +46,7 @@ namespace DBTest
             return Task.CompletedTask;
         }
 
-        static async Task RelyMessageAsync(MessageUDP message)
+        static async Task RelyMessageAsync(MessageUDP message, UdpClient? udpClient)
         {
             int? id = null;
             if (clients.TryGetValue(message.ToName, out IPEndPoint ep))
@@ -59,13 +55,12 @@ namespace DBTest
                 {
                     var fromUser = ctx.Users.First(x => x.Name == message.FromName);
                     var toUser = ctx.Users.First(x => x.Name == message.ToName);
-                    var msg = new DBTest.Models.Messages { FromUser = fromUser, ToUser = toUser, Received = false, Text = message.Text };
+                    var msg = new Messages { FromUser = fromUser, ToUser = toUser, Received = false, Text = message.Text };
                     ctx.Messages.Add(msg);
 
                     ctx.SaveChanges();
 
                     id = msg.Id;
-
 
                     var forwardMessageJson = new MessageUDP() { Id = id, Command = Command.Message, ToName = message.ToName, FromName = message.FromName, Text = message.Text }.ToJson();
 
@@ -101,7 +96,7 @@ namespace DBTest
             {
                 Console.WriteLine($"Получено сообщение от {message.FromName} для {message.ToName} с командой {message.Command}:");
                 Console.WriteLine(message.Text);
-                await RelyMessageAsync(message);
+                await RelyMessageAsync(message, udpClient);
             }
         }
 
@@ -145,9 +140,7 @@ namespace DBTest
                     Console.WriteLine("Ошибка при обработке сообщения: " + ex.Message);
                 }
             }
-
         }
-
     }
 }
 
