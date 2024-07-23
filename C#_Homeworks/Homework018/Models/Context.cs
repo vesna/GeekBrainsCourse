@@ -15,14 +15,14 @@ namespace Homework018.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Messages>(entity => { 
+            <Messages>(entity => { 
                 entity.HasKey(x => x.Id).HasName("massages_pkey");
                 entity.ToTable("Messages");
                 entity.Property(x => x.Id).HasColumnName("id");
                 entity.Property(x => x.Text).HasColumnName("text");
                 entity.Property(x => x.FromUserId).HasColumnName("from_user_id");
                 entity.Property(x => x.ToUserId).HasColumnName("to_user_id");
-
+modelBuilder.Entity
                 entity.HasOne(x => x.FromUser)
                     .WithMany(x => x.FromMessages).HasForeignKey(x => x.FromUserId).HasConstraintName("messages_from_user_id_fkey");
                 entity.HasOne(x => x.ToUser)
