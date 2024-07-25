@@ -1,0 +1,9 @@
+﻿namespace StoreMarket003.Contracts.Requests
+{
+    public class CategoryUpdateRequest
+    {
+        public int Id { get; set; }
+        public string Name { get; set; } = string.Empty;
+        public string? Description { get; set; }
+    }
+}
