@@ -14,34 +14,46 @@ namespace StoreMarket004.BLL
         private readonly StoreContext _context;
         private readonly IMapper _mapper;
         public readonly IMemoryCache _cache;
+        private readonly ITokenService _tokenService;
 
-        public StoreService(StoreContext context, IMapper mapper, IMemoryCache cache)
+        public StoreService(StoreContext context, IMapper mapper, IMemoryCache cache, ITokenService tokenService)
         {
             _context = context;
             _mapper = mapper;
             _cache = cache;
+            _tokenService = tokenService;
         }
 
-        public int AddStore(StoreCreateRequest request)
+        public int AddStore(StoreCreateRequest request, string token)
         {
-            var entity = _mapper.Map<Store>(request);
-            _context.Stores.Add(entity);
-            _context.SaveChanges();
-            _cache.Remove("stores");
-            return entity.Id;
-        }
-
-        public bool DeleteStore(int id)
-        {
-            var result = _context.Stores.FirstOrDefault(x => x.Id == id);
-
-            if (result != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                _context.Stores.Remove(result);
+                var entity = _mapper.Map<Store>(request);
+                _context.Stores.Add(entity);
                 _context.SaveChanges();
-                return true;
+                _cache.Remove("stores");
+                return entity.Id;
             }
-            else { return false; }
+            return -1;
+        }
+
+        public bool DeleteStore(int id, string token)
+        {
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
+            {
+                var result = _context.Stores.FirstOrDefault(x => x.Id == id);
+
+                if (result != null)
+                {
+                    _context.Stores.Remove(result);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            return false;
         }
 
         public StoreResponse? GetStoreById(int id)
@@ -62,46 +74,61 @@ namespace StoreMarket004.BLL
             return stories;
         }
 
-        public bool UpdateStoreName(int id, string name)
+        public bool UpdateStoreName(int id, string name, string token)
         {
-            var entity = _context.Stores.FirstOrDefault(x => x.Id == id);
-
-            if (entity != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                entity.Name = name;
-                _context.Stores.Update(entity);
+                var entity = _context.Stores.FirstOrDefault(x => x.Id == id);
+
+                if (entity != null)
+                {
+                    entity.Name = name;
+                    _context.Stores.Update(entity);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            return false;
+        }
+
+        public bool AddProductToStore(ProductStoreCreateRequest request, string token)
+        {
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
+            {
+                var entity = _mapper.Map<ProductStore>(request);
+                var product = _context.Products.FirstOrDefault(x => x.Id == request.ProductId);
+                var store = _context.Stores.FirstOrDefault(x => x.Id == request.StoreId);
+
+                if (product == null || store == null) return false;
+                _context.ProductStores.Add(entity);
+                store.Count++;
                 _context.SaveChanges();
                 return true;
             }
-            else { return false; }
+            return false;
         }
 
-        public bool AddProductToStore(ProductStoreCreateRequest request)
+        public bool DeleteProductFromStore(int storeId, int productId, string token)
         {
-            var entity = _mapper.Map<ProductStore>(request);
-            var product = _context.Products.FirstOrDefault(x => x.Id == request.ProductId);
-            var store = _context.Stores.FirstOrDefault(x => x.Id == request.StoreId);
-
-            if (product == null || store == null) return false;
-            _context.ProductStores.Add(entity);
-            store.Count++;
-            _context.SaveChanges();
-            return true;
-        }
-
-        public bool DeleteProductFromStore(int storeId, int productId)
-        {
-            var result = _context.ProductStores.FirstOrDefault(x => x.ProductId == productId && x.StoreId == storeId);
-            var store = _context.Stores.FirstOrDefault(x => x.Id == storeId);
-
-            if (result != null && store != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                _context.ProductStores.Remove(result);
-                store.Count--;
-                _context.SaveChanges();
-                return true;
+                var result = _context.ProductStores.FirstOrDefault(x => x.ProductId == productId && x.StoreId == storeId);
+                var store = _context.Stores.FirstOrDefault(x => x.Id == storeId);
+
+                if (result != null && store != null)
+                {
+                    _context.ProductStores.Remove(result);
+                    store.Count--;
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
-            else { return false; }
+            return false;
         }
     }
 }

@@ -5,7 +5,7 @@ namespace StoreMarket004.BLL.Abstractions
 {
     public interface IAuthService
     {
-        public string? Login(UserAuthRequest request);
+        public string? Login(string email, string password);
         public string? Register(UserAuthRequest request);
     }
 }

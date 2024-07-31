@@ -18,7 +18,7 @@ namespace StoreMarket004.GraphQL
             _authService = authService;
         }
 
-        public int AddProduct(ProductCreateRequest request) => _productService.AddProduct(request);
+        public int AddProduct(ProductCreateRequest request, string t) => _productService.AddProduct(request, t);
         public bool DeleteProduct(int id) => _productService.DeleteProduct(id);
         public bool UpdateProductPrice(int id, decimal price) => _productService.UpdateProductPrice(id, price);
 

@@ -13,34 +13,46 @@ namespace StoreMarket004.BLL
         private readonly StoreContext _context;
         private readonly IMapper _mapper;
         public readonly IMemoryCache _cache;
+        private readonly ITokenService _tokenService;
 
-        public CategoryService(StoreContext context, IMapper mapper, IMemoryCache cache)
+        public CategoryService(StoreContext context, IMapper mapper, IMemoryCache cache, ITokenService tokenService)
         {
             _context = context;
             _mapper = mapper;
             _cache = cache;
+            _tokenService = tokenService;
         }
 
-        public int AddCategory(CategoryCreateRequest request)
+        public int AddCategory(CategoryCreateRequest request, string token)
         {
-            var entity = _mapper.Map<Category>(request);
-            _context.Categories.Add(entity);
-            _context.SaveChanges();
-            _cache.Remove("categories");
-            return entity.Id;
-        }
-
-        public bool DeleteCategory(int id)
-        {
-            var result = _context.Categories.FirstOrDefault(x => x.Id == id);
-
-            if (result != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                _context.Categories.Remove(result);
+                var entity = _mapper.Map<Category>(request);
+                _context.Categories.Add(entity);
                 _context.SaveChanges();
-                return true;
+                _cache.Remove("categories");
+                return entity.Id;
             }
-            else { return false; }
+            return 0;
+        }
+
+        public bool DeleteCategory(int id, string token)
+        {
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
+            {
+                var result = _context.Categories.FirstOrDefault(x => x.Id == id);
+
+                if (result != null)
+                {
+                    _context.Categories.Remove(result);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
+            }
+            return false;
         }
 
         public CategoryResponse? GetCategoryById(int id)
@@ -61,18 +73,23 @@ namespace StoreMarket004.BLL
             return categories;
         }
 
-        public bool UpdateCategoryName(int id, string name)
+        public bool UpdateCategoryName(int id, string name, string token)
         {
-            var entity = _context.Categories.FirstOrDefault(x => x.Id == id);
-
-            if (entity != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                entity.Name = name;
-                _context.Categories.Update(entity);
-                _context.SaveChanges();
-                return true;
+                var entity = _context.Categories.FirstOrDefault(x => x.Id == id);
+
+                if (entity != null)
+                {
+                    entity.Name = name;
+                    _context.Categories.Update(entity);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
-            else { return false; }
+            return false;
         }
 
         /*public CategoryResponse? GetCategoryByName(string name)

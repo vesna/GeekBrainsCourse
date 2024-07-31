@@ -28,6 +28,6 @@ namespace StoreMarket004.GraphQL
         public IEnumerable<StoreResponse> GetStores() => _storeService.GetStores();
         public StoreResponse? GetStoreById(int storeId) => _storeService.GetStoreById(storeId);
 
-        public string? Login(UserAuthRequest request) => _authService.Login(request);
+        public string? Login(string email, string password) => _authService.Login(email, password);
     }
 }

@@ -13,20 +13,27 @@ namespace StoreMarket004.BLL
         private readonly StoreContext _context;
         private readonly IMapper _mapper;
         public readonly IMemoryCache _cache;
+        private readonly ITokenService _tokenService;
 
-        public ProductService(StoreContext context, IMapper mapper, IMemoryCache cache)
+        public ProductService(StoreContext context, IMapper mapper, IMemoryCache cache, ITokenService tokenService)
         {
             _context = context;
             _mapper = mapper;
             _cache = cache;
+            _tokenService = tokenService;
         }
-        public int AddProduct(ProductCreateRequest request)
+        public int AddProduct(ProductCreateRequest request, string token)
         {
             var entity = _mapper.Map<Product>(request);
-            _context.Products.Add(entity);
-            _context.SaveChanges();
-            _cache.Remove("products");
-            return entity.Id;
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
+            {
+                _context.Products.Add(entity);
+                _context.SaveChanges();
+                _cache.Remove("products");
+                return entity.Id;
+            }
+            return -1;
         }
 
         public ProductResponse? GetProductById(int id)
@@ -49,31 +56,41 @@ namespace StoreMarket004.BLL
 
         }
 
-        public bool DeleteProduct(int id)
+        public bool DeleteProduct(int id, string token)
         {
-            var result = _context.Products.FirstOrDefault(x => x.Id == id);
-
-            if (result != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                _context.Products.Remove(result);
-                _context.SaveChanges();
-                return true;
+                var result = _context.Products.FirstOrDefault(x => x.Id == id);
+
+                if (result != null)
+                {
+                    _context.Products.Remove(result);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
-            else { return false; }
+            return false;
         }
 
-        public bool UpdateProductPrice(int id, decimal price)
+        public bool UpdateProductPrice(int id, decimal price, string token)
         {
-            var entity = _context.Products.FirstOrDefault(x => x.Id == id);
-
-            if (entity != null)
+            var roleName = _tokenService.GetRoleNameFromToken(token);
+            if (roleName == RoleType.Administrator.ToString())
             {
-                entity.Price = price;
-                _context.Products.Update(entity);
-                _context.SaveChanges();
-                return true;
+                var entity = _context.Products.FirstOrDefault(x => x.Id == id);
+
+                if (entity != null)
+                {
+                    entity.Price = price;
+                    _context.Products.Update(entity);
+                    _context.SaveChanges();
+                    return true;
+                }
+                else { return false; }
             }
-            else { return false; }
+            return false;
         }
 
         /* public ProductResponse? GetProductByName(string name)

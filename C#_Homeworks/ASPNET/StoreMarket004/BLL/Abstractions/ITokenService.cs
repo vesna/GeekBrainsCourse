@@ -2,6 +2,7 @@
 {
     public interface ITokenService
     {
-        string GenerateToken(string email, string roleName);
+        public string GenerateToken(string email, string roleName);
+        public string GetRoleNameFromToken(string stream);
     }
 }

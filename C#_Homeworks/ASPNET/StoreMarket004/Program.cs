@@ -20,10 +20,10 @@ namespace StoreMarket004
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddDbContext<StoreContext>(/*options =>
+            builder.Services.AddDbContext<StoreContext>(options =>
             {
                 options.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("Storedb"));
-            }*/);
+            });
             builder.Services.AddDbContext<AuthContext>(options =>
             {
                 options.UseLazyLoadingProxies().UseNpgsql(builder.Configuration.GetConnectionString("Authdb"));

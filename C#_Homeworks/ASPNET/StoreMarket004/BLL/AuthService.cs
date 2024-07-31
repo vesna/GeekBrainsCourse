@@ -26,15 +26,15 @@ namespace StoreMarket004.BLL
             _mapper = mapper;
         }
 
-        public string? Login(UserAuthRequest request)
+        public string? Login(string email, string password)
         {
-            var user = _authContext.Users.FirstOrDefault(x => x.Email == request.Email);
+            var user = _authContext.Users.FirstOrDefault(x => x.Email == email);
             if (user == null)
             {
                 return null;
             }
-            var password = _encryptService.HashPassword(request.Password, user.Salt);
-            if(!user.Password.SequenceEqual(password)) { 
+            var pass= _encryptService.HashPassword(password, user.Salt);
+            if(!user.Password.SequenceEqual(pass)) { 
                 return null;
             }
             var role = _authContext.Roles.FirstOrDefault(x => x.Id == user.RoleId);

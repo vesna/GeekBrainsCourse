@@ -2,6 +2,7 @@
 using StoreMarket004.BLL.Abstractions;
 using StoreMarket004.Securities;
 using System.IdentityModel.Tokens.Jwt;
+using System.IO;
 using System.Security.Claims;
 
 namespace StoreMarket004.BLL
@@ -33,6 +34,21 @@ namespace StoreMarket004.BLL
                 signingCredentials: cred);
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+
+        public string GetRoleNameFromToken(string stream)
+        {
+            var handler = new JwtSecurityTokenHandler();
+            if (handler.CanReadToken(stream))
+            {
+                var jsonToken = handler.ReadToken(stream);
+                var tokenS = jsonToken as JwtSecurityToken;
+
+                var role = tokenS.Claims.First(claim => claim.Type == ClaimTypes.Role).Value;
+
+                return role;
+            }
+            return string.Empty;
         }
     }
 }
